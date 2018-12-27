@@ -1,0 +1,23 @@
+galaxy_info:
+  author: Larry Smith Jr.
+  description: your description
+
+  license: MIT
+
+  min_ansible_version: 2.4
+
+  # platforms:
+  # - name: Fedora
+  #   versions:
+  #   - all
+  #   - 25
+  # - name: SomePlatform
+  #   versions:
+  #   - all
+  #   - 1.0
+  #   - 7
+  #   - 99.99
+
+  galaxy_tags: []
+
+dependencies: []

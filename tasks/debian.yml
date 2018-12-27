@@ -1,0 +1,24 @@
+---
+- name: debian | Adding Kata Containers Repo Key
+  apt_key:
+    url: "{{ kata_containers_debian_repo_key }}"
+    state: present
+  become: true
+  register: result
+  until: result is successful
+
+- name: debian | Adding Kata Containers Repo
+  apt_repository:
+    repo: "{{ kata_containers_debian_repo }}"
+    state: present
+  become: true
+  register: result
+  until: result is successful
+
+- name: debian | Installing Kata Containers
+  apt:
+    name: ["kata-runtime", "kata-proxy", "kata-shim"]
+    state: present
+  become: true
+  register: result
+  until: result is successful
