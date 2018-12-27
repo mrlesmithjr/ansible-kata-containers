@@ -1,7 +1,10 @@
 ---
 # defaults file for ansible-kata-containers
-kata_containers_debian_repo_key: "{{ kata_containers_repo_url + ':/' + ansible_architecture + ':/master/xUbuntu_' + ansible_distribution_version + '/Release.key' }}"
-kata_containers_debian_repo: "{{ 'deb ' + kata_containers_repo_url + ':/' + ansible_architecture + ':/master/xUbuntu_' + ansible_distribution_version + '/ /'}}"
-kata_containers_redhat_repo: "{{ kata_containers_repo_url + ':/' + ansible_architecture + ':/master/CentOS_' + ansible_distribution_major_version + '/' }}"
-kata_containers_redhat_repo_key: "{{ kata_containers_repo_url + ':/' + ansible_architecture + ':/master/CentOS_' + ansible_distribution_major_version + '/repodata/repomd.xml.key' }}"
+kata_containers_branch: stable
+kata_containers_debian_repo_key: "{{ kata_containers_repo_url + ':/' + ansible_architecture + ':/' + kata_containers_release + '/xUbuntu_' + ansible_distribution_version + '/Release.key' }}"
+kata_containers_debian_repo: "{{ 'deb ' + kata_containers_repo_url + ':/' + ansible_architecture + ':/' + kata_containers_release + '/xUbuntu_' + ansible_distribution_version + '/ /'}}"
+kata_containers_redhat_repo: "{{ kata_containers_repo_url + ':/' + ansible_architecture + ':/' + kata_containers_release + '/CentOS_' + ansible_distribution_major_version + '/' }}"
+kata_containers_redhat_repo_key: "{{ kata_containers_repo_url + ':/' + ansible_architecture + ':/' + kata_containers_release + '/CentOS_' + ansible_distribution_major_version + '/repodata/repomd.xml.key' }}"
+kata_containers_release: "{{ kata_containers_branch + '-' + kata_containers_version }}"
 kata_containers_repo_url: http://download.opensuse.org/repositories/home:/katacontainers:/releases
+kata_containers_version: "1.4"
