@@ -1,0 +1,33 @@
+{{ ansible_managed|comment }}
+
+[hypervisor.qemu]
+path = "/usr/bin/qemu-lite-system-x86_64"
+kernel = "/usr/share/kata-containers/vmlinuz.container"
+image = "/usr/share/kata-containers/kata-containers.img"
+machine_type = "pc"
+kernel_params = ""
+firmware = ""
+machine_accelerators=""
+default_vcpus = {{ kata_containers_runtime_config['default_vcpus'] }}
+default_maxvcpus = {{ kata_containers_runtime_config['default_maxvcpus'] }}
+default_bridges = {{ kata_containers_runtime_config['default_bridges'] }}
+default_memory = {{ kata_containers_runtime_config['default_memory'] }}
+disable_block_device_use = false
+block_device_driver = "{{ kata_containers_runtime_config['block_device_driver'] }}"
+enable_iothreads = false
+
+[factory]
+
+[proxy.kata]
+path = "/usr/libexec/kata-containers/kata-proxy"
+
+[shim.kata]
+path = "/usr/libexec/kata-containers/kata-shim"
+
+[agent.kata]
+
+[netmon]
+path = "/usr/libexec/kata-containers/kata-netmon"
+
+[runtime]
+internetworking_model="{{ kata_containers_runtime_config['internetworking_model'] }}"

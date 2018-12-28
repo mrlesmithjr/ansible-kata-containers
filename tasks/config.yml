@@ -1,0 +1,7 @@
+---
+- name: config | Configuring Kata Runtime
+  template:
+    src: etc/kata-containers/configuration.toml.j2
+    dest: /etc/kata-containers/configuration.toml
+    mode: u=rw,g=r,o=r
+  become: true

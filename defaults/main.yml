@@ -1,10 +1,29 @@
 ---
 # defaults file for ansible-kata-containers
 kata_containers_branch: stable
+
+# Defines whether runtime configuration should be custom configured
+kata_containers_config: false
+
 kata_containers_debian_repo_key: "{{ kata_containers_repo_url + ':/' + ansible_architecture + ':/' + kata_containers_release + '/xUbuntu_' + ansible_distribution_version + '/Release.key' }}"
+
 kata_containers_debian_repo: "{{ 'deb ' + kata_containers_repo_url + ':/' + ansible_architecture + ':/' + kata_containers_release + '/xUbuntu_' + ansible_distribution_version + '/ /'}}"
+
 kata_containers_redhat_repo: "{{ kata_containers_repo_url + ':/' + ansible_architecture + ':/' + kata_containers_release + '/CentOS_' + ansible_distribution_major_version + '/' }}"
+
 kata_containers_redhat_repo_key: "{{ kata_containers_repo_url + ':/' + ansible_architecture + ':/' + kata_containers_release + '/CentOS_' + ansible_distribution_major_version + '/repodata/repomd.xml.key' }}"
+
 kata_containers_release: "{{ kata_containers_branch + '-' + kata_containers_version }}"
+
 kata_containers_repo_url: http://download.opensuse.org/repositories/home:/katacontainers:/releases
+
+kata_containers_runtime_config:
+  block_device_driver: virtio-scsi
+  default_bridges: 1
+  default_vcpus: 1
+  default_maxvcpus: 0
+  default_memory: 2048
+  # bridged|macvtap|none|tcfilter
+  internetworking_model: macvtap
+
 kata_containers_version: "1.4"
